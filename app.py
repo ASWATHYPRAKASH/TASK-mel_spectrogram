@@ -10,9 +10,10 @@ from mel_creator import generate_mel,generate_mel_in_thread
 
 app = Flask(__name__, static_folder='uploads', static_url_path='/uploads')
 
+host = os.environ.get("HOST", 'localhost')
 # MySQL configuration
 mysql_config = {
-    'host': 'localhost',
+    'host': host,
     'user': 'root',
     'password': 'root@123',
     'database': 'mel_script'
