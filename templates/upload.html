@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <h1>Video Upload Form</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="video/*" required>
+        <input type="submit" value="Upload">
+    </form>
+    <hr>
+    <h1>File List</h1>
+    <table>
+        <tr>
+            <th>File Id</th>
+            <th>Uploaded On</th>
+            <th>Audio File</th>
+            <th>Mel Spectogram</th>
+        </tr>
+        {% for i in data %}
+            <tr>
+                <td>{{ i[0] }}</td>
+                <td>{{ i[3] }}</td>
+                <td><audio controls>
+                    <source src="{{ url_for('static', filename=i[2][7:]) }}" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                </td>
+                <td>
+                    <a href="{{ url_for('static', filename=i[3][7:]) }}" download>
+                        <img src="{{ url_for('static', filename=i[3][7:]) }}" style="width: 300px;height: auto;">
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
