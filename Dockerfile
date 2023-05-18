@@ -8,4 +8,6 @@ RUN apt-get install ffmpeg -y
 WORKDIR /usr/app
 COPY . .
 RUN pip install -r requirements.txt
+RUN pip install mysql-connector 
+RUN pip install --upgrade mysql-connector-python
 CMD ["python3","app.py"]
