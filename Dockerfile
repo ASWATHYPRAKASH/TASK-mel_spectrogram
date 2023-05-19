@@ -2,6 +2,7 @@ FROM ubuntu:20.04
 RUN apt-get update 
 RUN apt-get install python3-dev -y
 RUN apt-get install python3-pip -y
+RUN apt-get install mysql-client -y
 ENV TZ=Asia/Kolkata \
     DEBIAN_FRONTEND=noninteractive
 RUN apt-get install ffmpeg -y
